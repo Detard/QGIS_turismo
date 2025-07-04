@@ -83,10 +83,11 @@
         <script src="data/Aeroportos_14.js"></script>
         <script src="data/Ferrovias_15.js"></script>
         <script src="data/Ecoturismo_16.js"></script>
-        <script src="data/Museus_17.js"></script>
-        <script src="data/Barragem_18.js"></script>
-        <script src="data/Cachoeiras_19.js"></script>
-        <script src="data/Praias_20.js"></script>
+        <script src="data/Museu_17.js"></script>
+        <script src="data/Parques_18.js"></script>
+        <script src="data/Barragem_19.js"></script>
+        <script src="data/Cachoeiras_20.js"></script>
+        <script src="data/Praias_21.js"></script>
         <script>
         //USAR NO NOVO PROJETO - INICIO
         // Defina os bounds iniciais
@@ -1257,7 +1258,7 @@ map.options.minZoom = map.getZoom();
             },
         });
         bounds_group.addLayer(layer_Ecoturismo_16);
-        function pop_Museus_17(feature, layer) {
+        function pop_Museu_17(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Instituição</strong><br />' + (feature.properties['Instituição'] !== null ? autolinker.link(String(feature.properties['Instituição']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1273,38 +1274,85 @@ map.options.minZoom = map.getZoom();
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Museus_17_0() {
+        function style_Museu_17_0() {
             return {
-                pane: 'pane_Museus_17',
+                pane: 'pane_Museu_17',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
-            iconUrl: 'markers/Museus_17.svg',
+            iconUrl: 'markers/Museu_17.svg',
             iconSize: [19.0, 19.0]
         }),
                 interactive: true,
             }
         }
-        map.createPane('pane_Museus_17');
-        map.getPane('pane_Museus_17').style.zIndex = 417;
-        map.getPane('pane_Museus_17').style['mix-blend-mode'] = 'normal';
-        var layer_Museus_17 = new L.geoJson(json_Museus_17, {
+        map.createPane('pane_Museu_17');
+        map.getPane('pane_Museu_17').style.zIndex = 417;
+        map.getPane('pane_Museu_17').style['mix-blend-mode'] = 'normal';
+        var layer_Museu_17 = new L.geoJson(json_Museu_17, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Museus_17',
-            layerName: 'layer_Museus_17',
-            pane: 'pane_Museus_17',
-            onEachFeature: pop_Museus_17,
+            dataVar: 'json_Museu_17',
+            layerName: 'layer_Museu_17',
+            pane: 'pane_Museu_17',
+            onEachFeature: pop_Museu_17,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Museus_17_0(feature));
+                return L.marker(latlng, style_Museu_17_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Museus_17);
-        function pop_Barragem_18(feature, layer) {
+        bounds_group.addLayer(layer_Museu_17);
+        function pop_Parques_18(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Instituição</strong><br />' + (feature.properties['Instituição'] !== null ? autolinker.link(String(feature.properties['Instituição']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Cidade/Região</strong><br />' + (feature.properties['Cidade/Região'] !== null ? autolinker.link(String(feature.properties['Cidade/Região']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Parques_18_0() {
+            return {
+                pane: 'pane_Parques_18',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Parques_18.svg',
+            iconSize: [19.0, 19.0]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Parques_18');
+        map.getPane('pane_Parques_18').style.zIndex = 418;
+        map.getPane('pane_Parques_18').style['mix-blend-mode'] = 'normal';
+        var layer_Parques_18 = new L.geoJson(json_Parques_18, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Parques_18',
+            layerName: 'layer_Parques_18',
+            pane: 'pane_Parques_18',
+            onEachFeature: pop_Parques_18,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Parques_18_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Parques_18);
+        function pop_Barragem_19(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Cidade</strong><br />' + (feature.properties['Cidade'] !== null ? autolinker.link(String(feature.properties['Cidade']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1332,98 +1380,120 @@ map.options.minZoom = map.getZoom();
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Barragem_18_0() {
+        function style_Barragem_19_0() {
             return {
-                pane: 'pane_Barragem_18',
+                pane: 'pane_Barragem_19',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
-            iconUrl: 'markers/Barragem_18.svg',
+            iconUrl: 'markers/Barragem_19.svg',
             iconSize: [19.0, 19.0]
         }),
                 interactive: true,
             }
         }
-        map.createPane('pane_Barragem_18');
-        map.getPane('pane_Barragem_18').style.zIndex = 418;
-        map.getPane('pane_Barragem_18').style['mix-blend-mode'] = 'normal';
-        var layer_Barragem_18 = new L.geoJson(json_Barragem_18, {
+        map.createPane('pane_Barragem_19');
+        map.getPane('pane_Barragem_19').style.zIndex = 419;
+        map.getPane('pane_Barragem_19').style['mix-blend-mode'] = 'normal';
+        var layer_Barragem_19 = new L.geoJson(json_Barragem_19, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Barragem_18',
-            layerName: 'layer_Barragem_18',
-            pane: 'pane_Barragem_18',
-            onEachFeature: pop_Barragem_18,
+            dataVar: 'json_Barragem_19',
+            layerName: 'layer_Barragem_19',
+            pane: 'pane_Barragem_19',
+            onEachFeature: pop_Barragem_19,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Barragem_18_0(feature));
+                return L.marker(latlng, style_Barragem_19_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Barragem_18);
-        function pop_Cachoeiras_19(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Cidade</strong><br />' + (feature.properties['Cidade'] !== null ? autolinker.link(String(feature.properties['Cidade']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Nome</strong><br />' + (feature.properties['Nome'] !== null ? autolinker.link(String(feature.properties['Nome']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Época do Ano com Água</strong><br />' + (feature.properties['Época do Ano com Água'] !== null ? autolinker.link(String(feature.properties['Época do Ano com Água']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Trilha</strong><br />' + (feature.properties['Trilha'] !== null ? autolinker.link(String(feature.properties['Trilha']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Nível</strong><br />' + (feature.properties['Nível'] !== null ? autolinker.link(String(feature.properties['Nível']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Entrada</th>\
-                        <td>' + (feature.properties['Entrada'] !== null ? autolinker.link(String(feature.properties['Entrada']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
+        bounds_group.addLayer(layer_Barragem_19);
+        // USAR NO NOVO PROJETO INICIO
+function pop_Cachoeiras_20(feature, layer) {
+    let popupContent; // Variável que guardará o HTML do popup
 
-        function style_Cachoeiras_19_0() {
+    // Pega o nome da cachoeira para a verificação
+    const nomeCachoeira = feature.properties['Cachoeira'] || feature.properties['Nome'] || '';
+
+    // SE a cachoeira for a "Cachoeira do Urubu Rei"
+    if (nomeCachoeira === 'Cachoeira do Urubu Rei') {
+        // Monta o popup ESPECIAL com a imagem
+        const nomeCidade = feature.properties['Cidade'];
+        const imgHtml = '<img src="images/urubu_rei.png" alt="Cachoeira do Urubu Rei" style="width:200px; height:auto; cursor:pointer;" onclick="abrirConteudoNoModal(\'iframe\', \'urubu_rei.html\')"><br>';
+        
+        popupContent = 
+            '<b>' + (nomeCidade ? nomeCidade : '') + '</b><br>' +
+            '<span style="font-size:1.1em;color:#1a5e2a;"><b>' + nomeCachoeira + '</b></span><br>' +
+            imgHtml;
+
+    } else {
+        // SENÃO, monta o popup PADRÃO com a tabela de informações para todas as outras
+        popupContent = '<table>\
+                          <tr>\
+                              <td colspan="2"><strong>Cidade</strong><br />' + (feature.properties['Cidade'] !== null ? autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                          </tr>\
+                          <tr>\
+                              <td colspan="2"><strong>Nome</strong><br />' + (feature.properties['Nome'] !== null ? autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                          </tr>\
+                          <tr>\
+                              <td colspan="2"><strong>Época do Ano com Água</strong><br />' + (feature.properties['Época do Ano com Água'] !== null ? autolinker.link(String(feature.properties['Época do Ano com Água'])) : '') + '</td>\
+                          </tr>\
+                          <tr>\
+                              <td colspan="2"><strong>Trilha</strong><br />' + (feature.properties['Trilha'] !== null ? autolinker.link(String(feature.properties['Trilha'])) : '') + '</td>\
+                          </tr>\
+                          <tr>\
+                              <td colspan="2"><strong>Nível</strong><br />' + (feature.properties['Nível'] !== null ? autolinker.link(String(feature.properties['Nível'])) : '') + '</td>\
+                          </tr>\
+                          <tr>\
+                              <th scope="row">Entrada</th>\
+                              <td>' + (feature.properties['Entrada'] !== null ? autolinker.link(String(feature.properties['Entrada'])) : '') + '</td>\
+                          </tr>\
+                      </table>';
+    }
+
+    // O código abaixo é padrão e aplica o conteúdo gerado ao popup
+    var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+    layer.on('popupopen', function(e) {
+        addClassToPopupIfMedia(content, e.popup);
+    });
+    layer.bindPopup(content, { maxHeight: 400 });
+}
+// USAR NO NOVO PROJETO FIM
+        function style_Cachoeiras_20_0() {
             return {
-                pane: 'pane_Cachoeiras_19',
+                pane: 'pane_Cachoeiras_20',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
-            iconUrl: 'markers/Cachoeiras_19.svg',
+            iconUrl: 'markers/Cachoeiras_20.svg',
             iconSize: [19.0, 19.0]
         }),
                 interactive: true,
             }
         }
-        map.createPane('pane_Cachoeiras_19');
-        map.getPane('pane_Cachoeiras_19').style.zIndex = 419;
-        map.getPane('pane_Cachoeiras_19').style['mix-blend-mode'] = 'normal';
-        var layer_Cachoeiras_19 = new L.geoJson(json_Cachoeiras_19, {
+        map.createPane('pane_Cachoeiras_20');
+        map.getPane('pane_Cachoeiras_20').style.zIndex = 420;
+        map.getPane('pane_Cachoeiras_20').style['mix-blend-mode'] = 'normal';
+        var layer_Cachoeiras_20 = new L.geoJson(json_Cachoeiras_20, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Cachoeiras_19',
-            layerName: 'layer_Cachoeiras_19',
-            pane: 'pane_Cachoeiras_19',
-            onEachFeature: pop_Cachoeiras_19,
+            dataVar: 'json_Cachoeiras_20',
+            layerName: 'layer_Cachoeiras_20',
+            pane: 'pane_Cachoeiras_20',
+            onEachFeature: pop_Cachoeiras_20,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Cachoeiras_19_0(feature));
+                return L.marker(latlng, style_Cachoeiras_20_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Cachoeiras_19);
-        function pop_Praias_20(feature, layer) {
+        bounds_group.addLayer(layer_Cachoeiras_20);
+        function pop_Praias_21(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Cidade</strong><br />' + (feature.properties['Cidade'] !== null ? autolinker.link(String(feature.properties['Cidade']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1451,42 +1521,43 @@ map.options.minZoom = map.getZoom();
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Praias_20_0() {
+        function style_Praias_21_0() {
             return {
-                pane: 'pane_Praias_20',
+                pane: 'pane_Praias_21',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
-            iconUrl: 'markers/Praias_20.svg',
+            iconUrl: 'markers/Praias_21.svg',
             iconSize: [19.0, 19.0]
         }),
                 interactive: true,
             }
         }
-        map.createPane('pane_Praias_20');
-        map.getPane('pane_Praias_20').style.zIndex = 420;
-        map.getPane('pane_Praias_20').style['mix-blend-mode'] = 'normal';
-        var layer_Praias_20 = new L.geoJson(json_Praias_20, {
+        map.createPane('pane_Praias_21');
+        map.getPane('pane_Praias_21').style.zIndex = 421;
+        map.getPane('pane_Praias_21').style['mix-blend-mode'] = 'normal';
+        var layer_Praias_21 = new L.geoJson(json_Praias_21, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Praias_20',
-            layerName: 'layer_Praias_20',
-            pane: 'pane_Praias_20',
-            onEachFeature: pop_Praias_20,
+            dataVar: 'json_Praias_21',
+            layerName: 'layer_Praias_21',
+            pane: 'pane_Praias_21',
+            onEachFeature: pop_Praias_21,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Praias_20_0(feature));
+                return L.marker(latlng, style_Praias_21_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Praias_20);
+        bounds_group.addLayer(layer_Praias_21);
         var overlaysTree = [
-            {label: '<img src="legend/Praias_20.png" /> Praias', layer: layer_Praias_20},
-            {label: '<img src="legend/Cachoeiras_19.png" /> Cachoeiras', layer: layer_Cachoeiras_19},
-            {label: '<img src="legend/Barragem_18.png" /> Barragem', layer: layer_Barragem_18},
-            {label: '<img src="legend/Museus_17.png" /> Museus', layer: layer_Museus_17},
+            {label: '<img src="legend/Praias_21.png" /> Praias', layer: layer_Praias_21},
+            {label: '<img src="legend/Cachoeiras_20.png" /> Cachoeiras', layer: layer_Cachoeiras_20},
+            {label: '<img src="legend/Barragem_19.png" /> Barragem', layer: layer_Barragem_19},
+            {label: '<img src="legend/Parques_18.png" /> Parques', layer: layer_Parques_18},
+            {label: '<img src="legend/Museu_17.png" /> Museu', layer: layer_Museu_17},
             {label: 'Ecoturismo<br /><table><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Açude0.png" /></td><td>Açude</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Balneário1.png" /></td><td>Balneário</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Cânion2.png" /></td><td>Cânion</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Delta3.png" /></td><td>Delta</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Lagoa4.png" /></td><td>Lagoa</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_OlhoDágua5.png" /></td><td>Olho D\'água</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Outras6.png" /></td><td>Outras</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Poço7.png" /></td><td>Poço</td></tr><tr><td style="text-align: center;"><img src="legend/Ecoturismo_16_Riacho8.png" /></td><td>Riacho</td></tr></table>', layer: layer_Ecoturismo_16},
         {label: '<b>Infraestrutura logística</b>', collapsed: true, selectAllCheckbox: true, children: [
             {label: 'Ferrovias<br /><table><tr><td style="text-align: center;"><img src="legend/Ferrovias_15_Desativada0.png" /></td><td>Desativada</td></tr><tr><td style="text-align: center;"><img src="legend/Ferrovias_15_EmObra1.png" /></td><td>Em Obra</td></tr><tr><td style="text-align: center;"><img src="legend/Ferrovias_15_EmOperação2.png" /></td><td>Em Operação</td></tr><tr><td style="text-align: center;"><img src="legend/Ferrovias_15_Estudo3.png" /></td><td>Estudo</td></tr></table>', layer: layer_Ferrovias_15},
@@ -1516,7 +1587,7 @@ map.options.minZoom = map.getZoom();
         });
         lay.addTo(map);
         setBounds();
-        //usar no novo projeto inicio
+//usar no novo projeto inicio
         </script>
         
 <div id="generic-modal">
@@ -1661,6 +1732,6 @@ map.options.minZoom = map.getZoom();
         const dy = touch2.clientY - touch1.clientY;
         return Math.sqrt(dx * dx + dy * dy);
     }
-        </script>
+</script>
     </body>
 </html>
